@@ -1,7 +1,5 @@
 package logistics.surgerylogistics;
 
-import java.util.HashMap;
-
 /**
  * Hello world!
  *
@@ -13,9 +11,9 @@ public class App
         System.out.println( "Hello World!" );
         Lager lager = new Lager();
         
-        lager.AnlegenOperation("Crazy Operation", "Arzt", "OTA", "Patient");
+       lager.AnlegenOperation("Crazy Operation", "Arzt", "OTA", "Patient");
         
-        lager.anzeigeBestandsliste();
+        System.out.println(lager.anzeigeBestandsliste());
     }
     
 
