@@ -18,20 +18,5 @@ public class App
         lager.anzeigeBestandsliste();
     }
     
-    
-    public void verbrauchtenProdukteAngeben(String [] produkte, int [] anzahlen)
-    {
-        HashMap <String , Integer> liste = new HashMap <String , Integer>();
-
-        for(int i=0; i<produkte.length; i++)
-        {
-            liste.put(produkte[i], anzahlen[i]);   
-        }
-
-        try{
-            lager.ChecklisteBearbeiten(liste);
-        }catch(Exception e)
-        {}
-    }
 
 }
