@@ -7,7 +7,7 @@ package logistics.surgerylogistics;
 public class App {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
-		Lager lager = new Lager();
+		Storage lager = new Storage();
 
 		lager.AnlegenOperation("Crazy Operation", "Arzt", "OTA", "Patient");
 

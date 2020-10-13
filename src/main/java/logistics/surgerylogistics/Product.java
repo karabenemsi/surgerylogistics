@@ -8,7 +8,7 @@ package logistics.surgerylogistics;
  * @version (4.11.0) Eclipse IDE for Java Developers
  */
 
-public class Produktart {
+public class Product {
 
 	private String Name;
 	private String ID;
@@ -26,7 +26,7 @@ public class Produktart {
 	 * @param maxBestand Maximalbestand
 	 */
 
-	public Produktart(String Name, String ID, int minBestand, int maxBestand) {
+	public Product(String Name, String ID, int minBestand, int maxBestand) {
 		this.Name = Name;
 		this.ID = ID;
 		aktBestand = maxBestand;
@@ -38,7 +38,7 @@ public class Produktart {
 	 * Standardkonstruktor
 	 */
 
-	public Produktart() {
+	public Product() {
 		Name = "Kanuele";
 		ID = "Kan_07";
 		aktBestand = 60;

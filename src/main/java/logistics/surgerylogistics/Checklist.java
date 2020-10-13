@@ -17,14 +17,14 @@ import java.lang.Exception;
  * @author Maximilian Hertle und Ronny Volm
  * @version 09.10.2020
  */
-public class Checkliste {
+public class Checklist {
 	private final String nameliste;
 	private HashMap<String, Integer> eintraege;
 
 	/**
 	 * Spezieller Konstruktor für Objekte der Klasse Checkliste
 	 */
-	public Checkliste(String NameListe) {
+	public Checklist(String NameListe) {
 		nameliste = NameListe;
 		eintraege = new HashMap<String, Integer>();
 		ChecklistenpunkteHinzufuegen();
@@ -34,7 +34,7 @@ public class Checkliste {
 	/**
 	 * Standardkonstruktor für Objekte der Klasse Checkliste
 	 */
-	public Checkliste() {
+	public Checklist() {
 		nameliste = "CL";
 		eintraege = new HashMap<String, Integer>();
 		ChecklistenpunkteHinzufuegen();
