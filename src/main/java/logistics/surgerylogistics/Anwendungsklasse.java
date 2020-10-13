@@ -1,3 +1,5 @@
+package logistics.surgerylogistics;
+
 import java.util.HashMap;
 /**
  * Beschreiben Sie hier die Klasse Anwendungsklasse.
