@@ -1,6 +1,8 @@
 package logistics.surgerylogistics;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -18,14 +20,16 @@ import java.lang.Exception;
  * @version 09.10.2020
  */
 public class Checklist {
-	private final SurgeryType surgeryTpye;
+	private final SurgeryType surgeryType;
 	private HashMap<String, Integer> eintraege;
+	private LinkedList<ChecklistEntry> entries;
 
 	/**
 	 * Spezieller Konstruktor für Objekte der Klasse Checkliste
 	 */
 	public Checklist(SurgeryType surgeryType) {
-		this.surgeryTpye = surgeryType;
+		this.surgeryType = surgeryType;
+		this.entries = new LinkedList<ChecklistEntry>();
 		eintraege = new HashMap<String, Integer>();
 		ChecklistenpunkteHinzufuegen();
 		test();
@@ -35,7 +39,8 @@ public class Checklist {
 	 * Standardkonstruktor für Objekte der Klasse Checkliste
 	 */
 	public Checklist() {
-		this.surgeryTpye = SurgeryType.Bypass;
+		this.surgeryType = SurgeryType.Bypass;
+		this.entries = new LinkedList<ChecklistEntry>();
 		eintraege = new HashMap<String, Integer>();
 		ChecklistenpunkteHinzufuegen();
 		test();
@@ -47,61 +52,8 @@ public class Checklist {
 	 *
 	 */
 	private void ChecklistenpunkteHinzufuegen() {
-		XSSFWorkbook workBook = null;
-		try {
-			workBook = new XSSFWorkbook(new FileInputStream("Produktliste.xlsx"));
-			XSSFSheet sheet = workBook.getSheetAt(0);
-
-			XSSFRow zeile = sheet.getRow(1);
-
-			int i = 9;
-			int index = 0;
-			boolean operationgefunden = false;
-			while (i < zeile.getLastCellNum()) // operationgefunden == false ||
-			{
-				if (zeile.getCell(i) != null && surgeryTpye.toString().equals(zeile.getCell(i).getStringCellValue())) {
-					operationgefunden = true;
-					index = i;
-				}
-				i++;
-			}
-
-			if (operationgefunden == true) {
-				i = 4;
-				zeile = sheet.getRow(i);
-				XSSFCell feldProduktart;
-				XSSFCell feldAnzahl;
-
-				while (sheet.getLastRowNum() >= i) // feldProduktart.getCellType() != CellType.BLANK)
-				{
-					if (zeile != null) {
-						feldProduktart = zeile.getCell(1);
-						feldAnzahl = zeile.getCell(index);
-						if (feldAnzahl != null) // && feldAnzahl.getCellType() != CellType.BLANK)
-						{
-							String s = feldProduktart.getStringCellValue();
-							int f = (int) feldAnzahl.getNumericCellValue();
-							eintraege.put(s, f);
-						}
-					}
-					i++;
-					zeile = sheet.getRow(i);
-				}
-			} else {
-				// Mitteilung
-			}
-		} catch (Exception e) {
-			System.out.println("Error while reading Excel file");
-			System.out.println(e);
-		} finally {
-			if (workBook != null)
-				try {
-					workBook.close();
-				} catch (IOException e) {
-					System.out.println("Couldn't close file");
-					e.printStackTrace();
-				}
-		}
+		ExcelReader reader = new ExcelReader();
+		this.entries = reader.readChecklistEntriesfromFile("Produktliste.xlsx", this.surgeryType);
 	}
 
 	private void test() {
@@ -133,7 +85,7 @@ public class Checklist {
 	 * @return Checklistenname
 	 */
 	public SurgeryType getSurgeryType() {
-		return surgeryTpye;
+		return this.surgeryType;
 	}
 
 	/**
@@ -153,4 +105,5 @@ public class Checklist {
 	public void setEintraege(HashMap<String, Integer> Eintraege) {
 		eintraege = Eintraege;
 	}
+
 }
