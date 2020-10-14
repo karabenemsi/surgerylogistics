@@ -9,7 +9,7 @@ public class App {
 		System.out.println("Hello World!");
 		Storage lager = new Storage();
 
-		lager.AnlegenOperation("Crazy Operation", "Arzt", "OTA", "Patient");
+		lager.AnlegenOperation(SurgeryType.Herzklappe, "Arzt", "OTA", "Patient");
 
 		System.out.println(lager.anzeigeBestandsliste());
 	}

@@ -18,14 +18,14 @@ import java.lang.Exception;
  * @version 09.10.2020
  */
 public class Checklist {
-	private final String nameliste;
+	private final SurgeryType surgeryTpye;
 	private HashMap<String, Integer> eintraege;
 
 	/**
 	 * Spezieller Konstruktor für Objekte der Klasse Checkliste
 	 */
-	public Checklist(String NameListe) {
-		nameliste = NameListe;
+	public Checklist(SurgeryType surgeryType) {
+		this.surgeryTpye = surgeryType;
 		eintraege = new HashMap<String, Integer>();
 		ChecklistenpunkteHinzufuegen();
 		test();
@@ -35,7 +35,7 @@ public class Checklist {
 	 * Standardkonstruktor für Objekte der Klasse Checkliste
 	 */
 	public Checklist() {
-		nameliste = "CL";
+		this.surgeryTpye = SurgeryType.Bypass;
 		eintraege = new HashMap<String, Integer>();
 		ChecklistenpunkteHinzufuegen();
 		test();
@@ -59,7 +59,7 @@ public class Checklist {
 			boolean operationgefunden = false;
 			while (i < zeile.getLastCellNum()) // operationgefunden == false ||
 			{
-				if (zeile.getCell(i) != null && nameliste.equals(zeile.getCell(i).getStringCellValue())) {
+				if (zeile.getCell(i) != null && surgeryTpye.toString().equals(zeile.getCell(i).getStringCellValue())) {
 					operationgefunden = true;
 					index = i;
 				}
@@ -132,8 +132,8 @@ public class Checklist {
 	 *
 	 * @return Checklistenname
 	 */
-	public String getNameliste() {
-		return nameliste;
+	public SurgeryType getSurgeryType() {
+		return surgeryTpye;
 	}
 
 	/**
@@ -150,7 +150,7 @@ public class Checklist {
 	 *
 	 * @param Einträge
 	 */
-	public void setEintraege(HashMap Eintraege) {
+	public void setEintraege(HashMap<String, Integer> Eintraege) {
 		eintraege = Eintraege;
 	}
 }
