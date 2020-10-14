@@ -9,6 +9,8 @@ public class App {
 		System.out.println("Hello World!");
 		Storage storage = Storage.getInstance();
 		System.out.println(storage.anzeigeBestandsliste());
+		
+		
 	}
 
 }

@@ -2,16 +2,8 @@ package logistics.surgerylogistics;
 
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
-import java.io.*;
-import java.lang.Exception;
 
 /**
  * Beschreiben Sie hier die Klasse Checkliste.
@@ -104,6 +96,14 @@ public class Checklist {
 	 */
 	public void setEintraege(HashMap<String, Integer> Eintraege) {
 		eintraege = Eintraege;
+	}
+
+	public LinkedList<ChecklistEntry> getEntries() {
+		return entries;
+	}
+
+	public void setEntries(LinkedList<ChecklistEntry> entries) {
+		this.entries = entries;
 	}
 
 }
