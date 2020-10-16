@@ -1,7 +1,8 @@
-package logistics.surgerylogistics;
+package de.fcg.logistics.surgerylogistics;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.LinkedList;
 
 import org.apache.poi.ss.usermodel.CellType;
@@ -13,8 +14,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelReader {
 
 	
-	public LinkedList<Product> readProductsfromFile(String filePath){
-		LinkedList<Product> products = new LinkedList<Product>();
+	public HashMap<String, Product> readProductsfromFile(String filePath){
+		HashMap<String,Product> products = new HashMap<String,Product>();
 		XSSFWorkbook workBook = null;
 		try {
 			workBook = new XSSFWorkbook(new FileInputStream(filePath));
@@ -41,7 +42,7 @@ public class ExcelReader {
 							String m = feldID.getStringCellValue();
 							int min = (int) feldMinAnzahl.getNumericCellValue();
 							int max = (int) feldMaxAnzahl.getNumericCellValue();
-							products.add(new Product(n, m, min, max));
+							products.put(m, new Product(n, m, min, max));
 						}
 					}
 				}

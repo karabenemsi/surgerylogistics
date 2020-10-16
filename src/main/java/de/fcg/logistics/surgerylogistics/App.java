@@ -1,4 +1,4 @@
-package logistics.surgerylogistics;
+package de.fcg.logistics.surgerylogistics;
 
 /**
  * Hello world!
