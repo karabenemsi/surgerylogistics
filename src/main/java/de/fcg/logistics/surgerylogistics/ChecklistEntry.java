@@ -20,7 +20,8 @@ public class ChecklistEntry {
       return this.product;
     }
 
-    public int getAmountPlaned(){
+
+	public int getAmountPlaned(){
       return this.amountPlaned;
     }
     
@@ -39,4 +40,10 @@ public class ChecklistEntry {
 	public void setProduct(Product product) {
 		this.product = product;
 	}
+    @Override
+	public String toString() {
+		return "ChecklistEntry [amountPlaned=" + amountPlaned + ", amountUsed=" + amountUsed + ", product=" + product
+				+ "]";
+	}
+
 }

@@ -95,13 +95,14 @@ public class ExcelReader {
 				while (sheet.getLastRowNum() >= i) // feldProduktart.getCellType() != CellType.BLANK)
 				{
 					if (zeile != null) {
-						feldProduktart = zeile.getCell(1);
+						feldProduktart = zeile.getCell(2);
 						feldAnzahl = zeile.getCell(index);
 						if (feldAnzahl != null) // && feldAnzahl.getCellType() != CellType.BLANK)
 						{
 							String s = feldProduktart.getStringCellValue();
 							int f = (int) feldAnzahl.getNumericCellValue();
-							entries.add(new ChecklistEntry(Storage.getInstance().findProductById(s), f));
+							Product p = Storage.getInstance().findProductById(s);
+							entries.add(new ChecklistEntry(p, f));
 						}
 					}
 					i++;

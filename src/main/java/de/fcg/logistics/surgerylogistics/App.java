@@ -8,9 +8,10 @@ public class App {
 	public static void main(String[] args) {
 		System.out.println("Hello World!");
 		Storage storage = Storage.getInstance();
-		System.out.println(storage.anzeigeBestandsliste());
+		storage.logStorage();
 		
-		
+		Surgery s = new Surgery(SurgeryType.Bypassoperation, "Surgeon", "OTA", "Patient");
+		System.out.println(s.toString());
 	}
 
 }

@@ -25,11 +25,8 @@ public final class Storage {
 	}
 
 	public boolean isAllStocked() {
-		boolean isStocked = true;
-		for (Entry<String, Product> pe : this.products.entrySet()) {
-			isStocked = !pe.getValue().isStockUnderMinimum();
-		}
-		return isStocked;
+		return this.products.entrySet().stream().map(entry -> !entry.getValue().isStockUnderMinimum()).reduce(true,
+				(a, b) -> a && b);
 	}
 
 	public void createOrder() {
@@ -47,7 +44,7 @@ public final class Storage {
 			this.products.get(oe.getKey()).increaseStock(oe.getValue());
 		}
 	}
-	
+
 	public void logStorage() {
 		System.out.println("Current Storage:");
 		for (Entry<String, Product> pe : this.products.entrySet()) {

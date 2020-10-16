@@ -13,7 +13,7 @@ public class Checklist {
 	}
 
 	public Checklist() {
-		this.surgeryType = SurgeryType.Bypass;
+		this.surgeryType = SurgeryType.Bypassoperation;
 		this.entries = new LinkedList<ChecklistEntry>();
 		this.importList();
 	}
@@ -33,6 +33,17 @@ public class Checklist {
 
 	public void setEntries(LinkedList<ChecklistEntry> entries) {
 		this.entries = entries;
+	}
+
+	@Override
+	public String toString() {
+		System.out.println(entries.size());
+		String str = "Checklist:\n";
+				str+= "surgeryType=" + surgeryType + "\n";
+				str+= "Entries=";
+
+				str += entries.stream().map(e -> e.getProduct().toString() + "\n").reduce("", String::concat);
+		return str;
 	}
 
 }

@@ -5,7 +5,7 @@ import java.util.HashMap;
 
 public class Order {
 	private boolean fullfilled;
-	private LocalDateTime dateCreated;
+	private final LocalDateTime dateCreated;
 	private LocalDateTime dateFullfilled;
 	private HashMap<String, Integer> orderMap;
 
@@ -30,6 +30,7 @@ public class Order {
 
 	public void setFullfilled() {
 		this.fullfilled = true;
+		this.dateFullfilled = LocalDateTime.now();
 	}
 	
 	public boolean isFullfilled() {
