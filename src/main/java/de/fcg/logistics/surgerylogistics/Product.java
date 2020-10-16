@@ -57,6 +57,16 @@ public class Product {
 		}
 	}
 	
+	public int increaseStock(int amount){
+		int added = 0;
+		try {
+			added = this.increaseStock(amount, true);
+		} catch(IllegalStockException e) {
+			
+		}
+		return added;
+	}
+	
 	public int increaseStock(int amount, boolean fillToLimit) throws IllegalStockException{
 		int amountAddedToStock = 0;
 		if ( this.stock + amount > this.maximumStock) {
